@@ -1,0 +1,21 @@
+@Component
+public class CalculoService {
+ 
+    // Método de injeção AutoWired
+    @Autowired
+    private CalculaOrçamento  calculaOrçamento;
+ 
+    public Deciamal calcularValor(Conta conta) {
+        return this.calculaOrçamento.calcular(conta);
+    }
+ 
+Aqui seria a beans que irá ser gerenciado pelo framework do spring
+
+@Component
+public class CalculaOrçamento {
+ 
+    public Decimal calcular(Conta conta) {
+        // Faz o cálculo....
+    }
+ 
+}

@@ -1,0 +1,26 @@
+public class Main
+{
+    public static void main(String[] args) {
+
+    //Exemplo 1 - List
+        List <String> list = new ArrayList();  
+        list.add("Carro")
+        list.add("Caminhão")
+
+        Iterator<String> itr= list.iterator();   //utilizando para fazer a leitura
+        while(itr.hasNext()){  
+        System.out.println(itr.next());  
+        } 
+
+
+    //Exemplo 2 - Queue
+        Queue<String> q1 = new PriorityQueue();
+        q1.add("Carro");
+        q1.add("Caminhão");
+        q1.add("Moto");
+    
+        System.out.println("Fila: " + q1);
+        q1.remove("Geeks"); //Demonstrando uma das funcionalidades dos metodos
+        System.out.println("Depois da remoção:  " + q1);
+    }
+} 

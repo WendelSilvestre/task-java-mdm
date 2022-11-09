@@ -1,0 +1,32 @@
+//Entidades de task e usuario criadas
+
+//Ponto chave para fazer a divisão do mapeamento:
+@GetMapping
+public Page<UserDto> findAll(Pageable pageable) {
+    return userService.findAll(pageable);
+}
+
+@GetMapping("/{id}")
+public UserDto findById(@PathVariable Long id) {
+    return userService.findById(id);
+}
+
+//Por fim o mapeamento em si
+private final Mapper mapper;
+private final UserDao userDao;
+
+@Override
+public Page<UserDto> findAll(Pageable pageable) {
+    // fetch dos resultados feitos do banco de dados
+    Page<User> results = userDao.findAll(pageable);
+    // Resultados mapeados para o tipo desejado e retornados como resultados na página
+    return results.map(user -> mapper.map(user, UserDto.class));
+}
+
+@Override
+public UserDto findById(Long id) {
+    User result = userDao.findById(id).orElseThrow(RuntimeException::new);
+    // mapeados para o tipo desejado e retornados com profundidade
+    UserDto mappedResult = mapper.map(result, 1, UserDto.class);
+    return mappedResult;
+} 
