@@ -1,0 +1,21 @@
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "veiculo")
+public class Veiculo{
+
+    @id
+    @Column(name = "ID", nullable = false)
+    private String placa;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", nullable = false)
+    private enum tipo {MOTOCICLETA, CAMINHAO, CARRO};
+
+    @Column(name = "cor")
+    private String cor;
+
+    @Column(name = "Data de Fabricação")
+    private String data;
+}
