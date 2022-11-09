@@ -1,0 +1,5 @@
+SELECT Alunos.Id, Alunos.Nome, Alunos.Valor, Notas.Nota
+FROM Alunos JOIN Notas
+ON Alunos.Valor BETWEEN Notas.Valor_Min AND Notas.Valor_Max
+WHERE Notas.Nota >= 8 ORDER BY Notas.Nota DESC OR WHERE Notas.Nota < 8 ORDER BY Notas.Nota DESC
+AND Alunos.Nome = NULL;
